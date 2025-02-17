@@ -17,4 +17,5 @@ EXPOSE 5000
 
 # Copies all local project files into the container.
 COPY . .
-CMD ["python", "app.py"]
+#CMD ["python", "app.py"] used to run the Flask application when  gunicorn is not installed 
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"] 
